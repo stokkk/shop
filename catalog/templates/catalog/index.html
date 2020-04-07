@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<h1>Products:</h1>
+	{% if products %}
+	<ul>
+		{% for p in products %}
+		<li>{{ p.brand }} {{ p.name }} {{p.price}}$</li>
+		{% endfor %}
+	</ul>
+	{% else %}
+		<p>No products</p>
+	{% endif %}
+	<form action="index.html">
+		<h4>Сортировка</h4>
+		<p><input name="sort" type="radio" value="sort_by_name">Name</p>
+		<p><input name="sort" type="radio" value="sorte_by_brand">Brand</p>
+		<p><input name="sort" type="radio" value="sorte_by_price">Price</p>
+		<button>Sort</button>
+	</form>
+</body>
+</html>

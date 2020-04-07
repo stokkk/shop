@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>index</title>
+</head>
+<body>
+	<script type="text/javascript">
+		function mytrigger() {
+			form = document.getElementById('myform')
+			form.action = form.action + document.getElementById('search').value;
+			document.body.append(form);
+			form.submit();
+		}
+	</script>
+	<h1>My Site!</h1>
+
+	<form action="{% url 'polls:index' %}" id="myform"method="GET">
+		<input type="text" id="search" size="40">
+		<input type="button" value="search" onclick="mytrigger()">
+	</form>
+
+	{% if latest_question_list %}
+	<ul>
+		{% for question in latest_question_list %}
+		<li><a href="{% url 'polls:detail' question.id %}">{{question.question_text }}</a></li>
+		{% endfor %}
+	</ul>
+	{% else %}
+	<p>No polls are available.</p>
+	{% endif %}
+	
+</body>
+</html>
